@@ -19,7 +19,9 @@
     "package": "npm run build && npm pack",
     "test": "jest --no-cache --runInBand",
     "test:cov": "jest --coverage --no-cache --runInBand",
-    "addscope": "node tools/packagejson name @teodorusnathaniel/pool-query"
+    "addscope": "node tools/packagejson name @teodorusnathaniel/pool-query",
+    "preversion": "git diff-index --quiet HEAD --",
+    "postversion": "git push --follow-tags"
   },
   "publishConfig": {
     "access": "public"
