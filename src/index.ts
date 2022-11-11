@@ -1,4 +1,5 @@
 export interface PoolQueryConfig<Param, SingleReturn> {
+  getQueryId?: (param: Param) => string
   multiCall: (params: Param[]) => Promise<SingleReturn[]>
   resultMapper?: {
     resultToKey: (result: SingleReturn) => string
@@ -11,7 +12,13 @@ export interface PoolQueryConfig<Param, SingleReturn> {
 export default function poolQuery<Param, SingleReturn>(
   config: PoolQueryConfig<Param, SingleReturn>
 ): (param: Param) => Promise<SingleReturn | undefined> {
-  const { multiCall, singleCall, waitTime = 250, resultMapper } = config
+  const {
+    getQueryId,
+    multiCall,
+    singleCall,
+    waitTime = 250,
+    resultMapper,
+  } = config
   let queryPool: Param[] = []
   let timeout: number | undefined
 
@@ -35,7 +42,18 @@ export default function poolQuery<Param, SingleReturn>(
       })
       response = Promise.all(queries)
     } else {
-      response = multiCall(queryPool)
+      let allParams = queryPool
+      if (getQueryId) {
+        allParams = []
+        const uniqueQueries = new Set()
+        for (let i = queryPool.length - 1; i >= 0; i--) {
+          const queryId = getQueryId(queryPool[i])
+          if (uniqueQueries.has(queryId)) continue
+          uniqueQueries.add(queryId)
+          allParams.push(queryPool[i])
+        }
+      }
+      response = multiCall(allParams)
     }
     const resultArray = await response
 
