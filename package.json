@@ -1,6 +1,6 @@
 {
-  "name": "example-typescript-package",
-  "version": "0.2.2",
+  "name": "pool-query",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -28,27 +28,22 @@
     "dist"
   ],
   "keywords": [
-    "example",
     "typescript",
     "npm",
     "package",
-    "sample",
-    "boilerplate",
-    "starter",
-    "demo",
-    "cjs",
-    "esm",
-    "umd"
+    "react query",
+    "pool query",
+    "query pooling"
   ],
-  "author": "Tom Chen <tomchen.org@gmail.com>",
+  "author": "Teodorus Nathaniel",
   "license": "MIT",
-  "homepage": "https://github.com/tomchen/example-typescript-package",
+  "homepage": "https://github.com/teodorus-nathaniel/pool-query",
   "repository": {
     "type": "git",
-    "url": "git@github.com:tomchen/example-typescript-package.git"
+    "url": "git@github.com:teodorus-nathaniel/pool-query.git"
   },
   "bugs": {
-    "url": "https://github.com/tomchen/example-typescript-package/issues"
+    "url": "https://github.com/teodorus-nathaniel/pool-query/issues"
   },
   "dependencies": {},
   "devDependencies": {
