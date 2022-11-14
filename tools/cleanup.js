@@ -25,5 +25,5 @@ if (folder) {
   deleteFolderRecursive(Path.join(__dirname, '../dist/cjs'))
   deleteFolderRecursive(Path.join(__dirname, '../dist/esm'))
   deleteFolderRecursive(Path.join(__dirname, '../dist/umd'))
-  deleteFolderRecursive(Path.join(__dirname, '../dist'))
+  deleteFolderRecursive(Path.join(__dirname, '../dist/types'))
 }
