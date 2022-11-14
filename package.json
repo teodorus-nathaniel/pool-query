@@ -5,15 +5,7 @@
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "umd:main": "dist/umd/index.js",
-  "types": "dist/types/index.d.js",
-  "exports": {
-    ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.mjs",
-      "default": "./dist/cjs/index.js"
-    },
-    "./package.json": "./package.json"
-  },
+  "types": "dist/index.d.js",
   "scripts": {
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
