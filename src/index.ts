@@ -11,7 +11,7 @@ export interface PoolQueryConfig<Param, SingleReturn> {
 
 export default function poolQuery<Param, SingleReturn>(
   config: PoolQueryConfig<Param, SingleReturn>
-): (param: Param) => Promise<SingleReturn | undefined> {
+): (param: Param) => Promise<SingleReturn | null> {
   const {
     getQueryId,
     multiCall,
@@ -72,7 +72,7 @@ export default function poolQuery<Param, SingleReturn>(
 
   return async function executedFunction(
     param: Param
-  ): Promise<SingleReturn | undefined> {
+  ): Promise<SingleReturn | null> {
     const currentIndex = queryPool.length
     queryPool.push(param)
     window.clearTimeout(timeout)
@@ -83,7 +83,7 @@ export default function poolQuery<Param, SingleReturn>(
       return result[currentIndex]
     } else {
       const key = resultMapper?.paramToKey(param)
-      return key ? result[key] : undefined
+      return key ? result[key] : null
     }
   }
 }
