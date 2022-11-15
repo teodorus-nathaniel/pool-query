@@ -80,10 +80,10 @@ export default function poolQuery<Param, SingleReturn>(
 
     const result = await batchPromise
     if (Array.isArray(result)) {
-      return result[currentIndex]
+      return result[currentIndex] ?? null
     } else {
       const key = resultMapper?.paramToKey(param)
-      return key ? result[key] : null
+      return key ? result[key] ?? null : null
     }
   }
 }
