@@ -12,7 +12,7 @@ yarn add pool-query
 
 # Usage
 
-```
+```ts
 import poolQuery from 'pool-query'
 
 type Param = { queryKey: [string, string] } // param types
@@ -35,14 +35,14 @@ main()
 
 ## Integration with react-query
 
-```
+```tsx
 // App.tsx
 export default function App() {
   return (
     <>
-      <Pokemon name='arceus' />
-      <Pokemon name='dialga' />
-      <Pokemon name='palkia' />
+      <Pokemon name="arceus" />
+      <Pokemon name="dialga" />
+      <Pokemon name="palkia" />
     </>
   )
 }
